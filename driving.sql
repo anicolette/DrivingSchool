@@ -196,7 +196,7 @@ CREATE OR REPLACE TRIGGER test_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT ins_id_seq.nextval INTO :NEW.TestId FROM DUAL;
+	SELECT test_id_seq.nextval INTO :NEW.TestId FROM DUAL;
 	END;
 	/
 
