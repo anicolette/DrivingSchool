@@ -53,7 +53,7 @@ CREATE TABLE anicolette.Car(
 	CarId INT, PRIMARY KEY(CarId),
 	assignedEmployee INT,
 	CONSTRAINT fk_assignedEmpKey FOREIGN KEY(assignedEmployee) REFERENCES anicolette.Employee(IdNo),
-	LPlate VARCHAR(10)
+	LPlate VARCHAR(100)
 );
 
 CREATE SEQUENCE car_id_seq
