@@ -165,7 +165,7 @@ CREATE OR REPLACE TRIGGER lesson_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT ins_id_seq.nextval INTO :NEW.LessonId FROM DUAL;
+	SELECT lesson_id_seq.nextval INTO :NEW.LessonId FROM DUAL;
 	END;
 	/
 
