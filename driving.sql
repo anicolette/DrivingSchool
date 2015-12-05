@@ -154,7 +154,8 @@ CREATE TABLE anicolette.Lesson(
 	Instructor INT,
 	CONSTRAINT fk_instlessonKey FOREIGN KEY(Instructor) REFERENCES anicolette.Employee(IdNo) ON DELETE SET NULL,
 	time TIMESTAMP,
-	isBlocked CHAR
+	isBlocked CHAR,
+	milesDriven INT
 );
 
 CREATE SEQUENCE lesson_id_seq
