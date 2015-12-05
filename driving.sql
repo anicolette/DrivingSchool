@@ -46,7 +46,7 @@ CREATE TABLE anicolette.Role(
 	role VARCHAR(50),
 	OfficeNo INT,
 	CONSTRAINT fk_officeroleKey FOREIGN KEY(OfficeNo) REFERENCES anicolette.Office(OfficeNo) ON DELETE CASCADE,
-	PRIMARY KEY (empId, role, officeNo)
+	PRIMARY KEY (empId, role, OfficeNo)
 );
 
 CREATE TABLE anicolette.Car(
