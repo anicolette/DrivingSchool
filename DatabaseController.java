@@ -99,7 +99,14 @@ public class DatabaseController {
   }
 
   public void addEmployee(String fName, String mName, String lName, int ssn, int salary, int officeNo){
-	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, ssn, Salary, OfficeNo) VALUES(" + fName + ", " + mName + ", " + lName + ", " + ssn + ", "  + salary + ", "  +  officeNo >= 1 ? officeNo : "NULL)";
+	String officeVal = "";
+	if(officeNo >= 1){
+		officeVal = officeNo +"";
+	} else {
+		officeVal = "NULL";
+	}
+	
+	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, ssn, Salary, OfficeNo) VALUES(" + fName + ", " + mName + ", " + lName + ", " + ssn + ", "  + salary + ", "  +  officeVal + ")";
 
 	try {
 		statement_.executeQuery(insertEmployee);	
