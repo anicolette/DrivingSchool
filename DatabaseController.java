@@ -40,7 +40,7 @@ public class DatabaseController {
     // your cs login name
     username = "username"; 
     // your Oracle password, NNNN is the last four digits of your CSID
-    password = "password";
+    password = "passwd";
     connect_string_ = "jdbc:oracle:thin:@aloe.cs.arizona.edu:1521:oracle";
   }
 
@@ -98,7 +98,7 @@ public class DatabaseController {
     }
   }
 
-  public void addEmployee(String fName, String mName, String lName, int ssn, int salary, int officeNo){
+  public String addEmployee(String fName, String mName, String lName, int salary, int officeNo){
 	String officeVal = "";
 	if(officeNo >= 1){
 		officeVal = officeNo +"";
@@ -106,14 +106,15 @@ public class DatabaseController {
 		officeVal = "NULL";
 	}
 	
-	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, ssn, Salary, OfficeNo) VALUES(" + fName + ", " + mName + ", " + lName + ", " + ssn + ", "  + salary + ", "  +  officeVal + ")";
+	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, Salary, OfficeNo) VALUES('" + fName + "', '" + mName + "', '" + lName + "', "  + salary + ", "  +  officeVal + ")";
 
 	try {
-		statement_.executeQuery(insertEmployee);	
+		ResultSet rs = statement_.executeQuery(insertEmployee);	
+		return rs.toString();
  	} catch (SQLException sqlex) {
 		sqlex.printStackTrace();
 	}
-	
+	return null;
   }
 
   public Vector<String> FindAllEmployees() {

@@ -3,9 +3,7 @@ CREATE TABLE anicolette.Employee(
 	firstName VARCHAR(50),
 	middleName VARCHAR(50),
 	lastName VARCHAR(50),	
-	ssn INT,
-	Salary INT,
-	OfficeNo INT
+	Salary INT
 );
 
 CREATE SEQUENCE emp_id_seq
@@ -21,12 +19,6 @@ CREATE OR REPLACE TRIGGER emp_id_trigger
 	END;
 	/	
 
-CREATE TABLE anicolette.Role(
-	empId INT, 
-	CONSTRAINT fk_empKey FOREIGN KEY (empId) REFERENCES anicolette.Employee(IdNo) ON DELETE CASCADE,
-	role VARCHAR(50),
-	PRIMARY KEY (empId, role)
-);
 
 CREATE TABLE anicolette.Office(
 	OfficeNo INT, PRIMARY KEY(OfficeNo),
@@ -48,11 +40,15 @@ CREATE OR REPLACE TRIGGER office_id_trigger
 	END;
 	/	
 
-ALTER TABLE anicolette.Employee
-	ADD CONSTRAINT fk_OfficeKey
-	FOREIGN KEY (OfficeNo) REFERENCES anicolette.Office(OfficeNo) 
-	ON DELETE SET NULL;
-	
+CREATE TABLE anicolette.Role(
+	empId INT, 
+	CONSTRAINT fk_empKey FOREIGN KEY (empId) REFERENCES anicolette.Employee(IdNo) ON DELETE CASCADE,
+	role VARCHAR(50),
+	OfficeNo INT,
+	CONSTRAINT fk_officeroleKey FOREIGN KEY(OfficeNo) REFERENCES anicolette.Office(OfficeNo) ON DELETE CASCADE,
+	PRIMARY KEY (empId, role)
+);
+
 CREATE TABLE anicolette.Car(
 	CarId INT, PRIMARY KEY(CarId),
 	assignedEmployee INT,
