@@ -55,6 +55,8 @@ ALTER TABLE anicolette.Employee
 	
 CREATE TABLE anicolette.Car(
 	CarId INT, PRIMARY KEY(CarId),
+	assignedEmployee INT,
+	CONSTRAINT fk_assignedEmpKey FOREIGN KEY(assignedEmployee) REFERENCES anicolette.Employee(IdNo),
 	LPlate VARCHAR(10)
 );
 
