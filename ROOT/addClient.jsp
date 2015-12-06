@@ -23,10 +23,10 @@
   String lName = request.getParameter("lastName");
   String registered = request.getParameter("registered");
   String birthYear = request.getParameter("birthYear");
-  String birthMonth = request.getParamter("birthMonth");
-  String birthDay = request.getParamter("birthDay");
+  String birthMonth = request.getParameter("birthMonth");
+  String birthDay = request.getParameter("birthDay");
   String provisionNum = request.getParameter("provisionNum");
-  String assignedInstructor = request.getParamter("assignedInstructor");
+  String assignedInstructor = request.getParameter("assignedInstructor");
   String requestedInstructor = request.getParameter("requestedInstructor");
   int rgstrd = -1;
   try{
