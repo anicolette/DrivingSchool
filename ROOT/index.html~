@@ -2,7 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Inspection AddForm</title>
+<title>demo of JSP with one button</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <script type="text/javascript" src="scripts/search.js"></script>
 </head>
@@ -10,24 +10,15 @@
 <br/>
 <br/>
 <div align="center">
-  <h2>CS460 Fall2015, Program #4<h2>
-  <h4>Inspection Add Form</h4>
-  
+  <h2>CS460 Fall2009, Program #4<h2>
+  <h4>Demo of a Simple JSP Application</h4>
   <br/>
+  <h6>Please excuse the simple appearance of this page,
+      just click the button</h6>
   <br/>
-  <form action="addInspection.jsp">
-	Inspection Date: </br>
-	<input type="text" name="instDate">
-	<br/>
-	Inspector: </br>
-	<input type="text" name="inspector">
-	<br/>
-	Car ID: </br>
-	<input type="text" name="carId">
-	<br/>
-	<br/>
-	<input type="submit" value="Submit">
-  </form>
+  <input type="button" id="btn_search" value="list all employees"
+      onClick="Search()"/>
 </div>
 </body>
 </html>
+

@@ -98,74 +98,68 @@ public class DatabaseController {
     }
   }
 
-  public boolean addEmployee(String fName, String mName, String lName, int salary, int officeNo){
-	String officeVal = "";
-	if(officeNo >= 1){
-		officeVal = officeNo +"";
-	} else {
-		officeVal = "NULL";
-	}
+  public boolean addEmployee(String fName, String mName, String lName, int salary) throws SQLException{
 	
-	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, Salary, OfficeNo) VALUES('" + fName + "', '" + mName + "', '" + lName + "', "  + salary + ", "  +  officeVal + ")";
+	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, Salary) VALUES('" + fName + "', '" + mName + "', '" + lName + "', "  + salary + ")";
 
 	try {
 		ResultSet rs = statement_.executeQuery(insertEmployee);	
  	} catch (SQLException sqlex) {
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addRole(int empId, String role, int officeNo){
+  public boolean addRole(int empId, String role, int officeNo) throws SQLException{
 	String addRole = "INSERT INTO anicolette.Role(empId, role, OfficeNo) VALUES(" + empId + ", '" + role + "', " + officeNo  + ")"; 	
 
 	try {
 		ResultSet rs = statement_.executeQuery(addRole);	
  	} catch (SQLException sqlex) {
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addOffice(String city){
+  public boolean addOffice(String city) throws SQLException{
 	String addOffice = "INSERT INTO anicolette.Office(city) VALUES('" + city + "')";
 
 	try{
 		ResultSet rs = statement_.executeQuery(addOffice);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addCar(String lPlate){
+  public boolean addCar(String lPlate) throws SQLException{
 	String addCar = "INSERT INTO anicolette.Car(LPlate) VALUES('" + lPlate  + "')";
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addCar);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addNeed(int client, int instructor, String description){
+  public boolean addNeed(int client, int instructor, String description) throws SQLException{
 	String addNeed = "INSERT INTO anicolette.Need(Client, Instructor, Description) VALUES(" + client + ", " + instructor + ", " + description + ")";
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addNeed);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addLesson(int client, int instructor, String year, String month, String day, String hour, String minute, boolean isBlocked, int milesDriven){
+  public boolean addLesson(int client, int instructor, String year, String month, String day, String hour, String minute, boolean isBlocked, int milesDriven) throws SQLException{
 	String block = "F";
 	if(isBlocked){
 		block = "T";
@@ -176,20 +170,20 @@ public class DatabaseController {
 		ResultSet rs = statement_.executeQuery(addLesson);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
 
-  public boolean addInterview(int interviewer, String year, String month, String day, String hour, String minute, int client){
+  public boolean addInterview(int interviewer, String year, String month, String day, String hour, String minute, int client) throws SQLException{
 	String addInterview = "INSERT INTO anicolette.Interview(Interviewer, time, Client) VALUES(" + interviewer + ", TIMESTAMP '" + year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00', " + client + ")";
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addInterview);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
@@ -201,12 +195,12 @@ public class DatabaseController {
 		ResultSet rs = statement_.executeQuery(addNote);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addDrivingTest(int instructor, int client, String year, String month, String day, String hour, String minute, char testType, boolean pass){
+  public boolean addDrivingTest(int instructor, int client, String year, String month, String day, String hour, String minute, char testType, boolean pass) throws SQLException{
 	String passed = "T";
 	if(!pass){
 		passed = "F";
@@ -218,12 +212,12 @@ public class DatabaseController {
 		ResultSet rs = statement_.executeQuery(addDrivingTest);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addClient(String fName, String mName, String lName, int registered, String year, String month, String day, int provisionNum, int assignedInstructor, int requestedInstructor){
+  public boolean addClient(String fName, String mName, String lName, int registered, String year, String month, String day, int provisionNum, int assignedInstructor, int requestedInstructor) throws SQLException{
 	String addClient = "INSERT INTO anicolette.Client(firstName, middleName, lastName, registered, dob, provisionNum, assignedInstructor, requestedInstructor) VALUES(";
 	addClient += "'" + fName + "', '" + mName + "', '" + lName + "', " + registered + ", TIMESTAMP '" + year + "-" + month + "-" + day + "', " + provisionNum + ", ";
 	addClient += assignedInstructor + ", " + requestedInstructor + ")";
@@ -232,43 +226,43 @@ public class DatabaseController {
 		ResultSet rs = statement_.executeQuery(addClient);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addFailure(int test, String description){
+  public boolean addFailure(int test, String description) throws SQLException{
 	String addFailure = "INSERT INTO anicolette.Failure(TestId, Description) VALUES(" + test + ", '" + description + "')"; 
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addFailure);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addFault(String description){
+  public boolean addFault(String description) throws SQLException{
 	String addFault = "INSERT INTO anicolette.Fault(Description) VALUES('" + description + "')";
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addFault);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }
 
-  public boolean addInspection(String year, String month, String day, String hour, String minute, int inspectorId, int carId){
+  public boolean addInspection(String year, String month, String day, String hour, String minute, int inspectorId, int carId) throws SQLException{
 	String addInspection = "INSERT INTO anicolette.Inspection(instDate, Inspector, CarId) VALUES(TIMESTAMP '" + year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00', " + inspectorId + ", " + carId + ")";
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addInspection);
 	} catch (SQLException sqlex){
 		sqlex.printStackTrace();
-		return false;
+		throw sqlex;
 	}
 	return true;
   }

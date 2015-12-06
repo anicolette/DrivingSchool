@@ -22,23 +22,19 @@
   String mName = request.getParameter("Middle Name");
   String lName = request.getParameter("Last Name");
   String salStr = request.getParameter("Salary");
-  String officeStr = request.getParameter("Office No");
   int salary = 0;
-  int officeNo = -1;
   try{
 	salary = Integer.parseInt(salStr);
   } catch(Exception e){
 	throw e;
   }
 
-  try{
-	officeNo = Integer.parseInt(officeStr);
-  } catch(Exception e){
-	officeNo = -1;
+  if(!dbcontroller.addEmployee(fName, mName, lName, salary)){
+	out.write("Error!");
+	out.write("</br><a href=\"index.html\">Return to home</a>");
+  } else{ 
+  	response.sendRedirect("index.html");
   }
-
-  dbcontroller.addEmployee(fName, mName, lName, salary, officeNo);  
-  response.sendRedirect("index.html");
   
 
   // close the dbcontroller and relase all resources occupied by it.
