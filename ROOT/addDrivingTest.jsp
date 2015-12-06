@@ -23,10 +23,10 @@
   String year = request.getParameter("year");
   String month = request.getParameter("month");
   String day = request.getParameter("day");
-  String hour = request.getParamter("hour");
-  String minute = request.getParamter("minute");
+  String hour = request.getParameter("hour");
+  String minute = request.getParameter("minute");
   String testType = request.getParameter("testType");
-  String pass = request.getParamter("pass");
+  String pass = request.getParameter("pass");
   
   int instr = -1;
   try {
