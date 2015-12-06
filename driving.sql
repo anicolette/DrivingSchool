@@ -123,7 +123,7 @@ CREATE OR REPLACE TRIGGER client_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT ins_id_seq.nextval INTO :NEW.ClientId FROM DUAL;
+	SELECT client_id_seq.nextval INTO :NEW.ClientId FROM DUAL;
 	END;
 	/
 
@@ -165,7 +165,7 @@ CREATE OR REPLACE TRIGGER lesson_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT ins_id_seq.nextval INTO :NEW.LessonId FROM DUAL;
+	SELECT lesson_id_seq.nextval INTO :NEW.LessonId FROM DUAL;
 	END;
 	/
 
@@ -196,7 +196,7 @@ CREATE OR REPLACE TRIGGER test_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT ins_id_seq.nextval INTO :NEW.TestId FROM DUAL;
+	SELECT test_id_seq.nextval INTO :NEW.TestId FROM DUAL;
 	END;
 	/
 
