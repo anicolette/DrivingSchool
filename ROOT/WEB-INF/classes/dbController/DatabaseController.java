@@ -286,4 +286,214 @@ public class DatabaseController {
     }
     return null;
   }
+  
+  public void deleteEmployee(int ID) throws SQLException
+{
+	String deleteEmployee = "DELETE FROM Employee WHERE IdNo=" + ID + ';';
+	try
+	{
+		ResultSet rs = statement_.executeQuery(deleteEmployee);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteOffice(int ID) throws SQLException
+{
+	String deleteOffice = "DELETE FROM Office WHERE OfficeNo=" + ID + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteOffice);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteCar(int ID) throws SQLException
+{
+	String deleteCar = "DELETE FROM Car WHERE CarId=" + ID + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteCar);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteInspection(int ID) throws SQLException
+{
+	String deleteInspection = "DELETE FROM Inspection WHERE InsId=" + ID + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteInspection);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteLesson(int ID) throws SQLException
+{
+	String deleteLesson = "DELETE FROM Lesson WHERE LessonId=" + ID + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteLesson);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteClient(int ID) throws SQLException
+{
+	String deleteClient = "DELETE FROM Client WHERE ClientId=" + ID + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteClient);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteDrivingTest(int ID) throws SQLException
+{
+	String deleteDrivingTest = "DELETE FROM DrivingTest WHERE TestId=" + ID + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteDrivingTest);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteInterview(String year, String month, String day, String hour, String minute, int interviewerID) throws SQLException
+{
+	String time = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00";
+	String deleteInterview = "DELETE FROM Interview WHERE Interviewer=" + interviewerID + " AND time=" + time + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteInterview);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteRole(int empID, String role, int officeNo) throws SQLException
+{
+	String deleteRole = "DELETE FROM Role WHERE empId=" + empID + " AND role=" + role + " AND OfficeNo=" + officeNo + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteRole);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+
+public void deleteNeed(int clientID, int instructorID, String description) throws SQLException
+{
+	String deleteNeed = "DELETE FROM Need WHERE Client=" + clientID + " AND Instructor=" + instructorID + " AND Description=" + description + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteNeed);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteNote(int lessonID, String note) throws SQLException
+{
+	String deleteNote = "DELETE FROM Note WHERE LessonId=" + lessonID + " AND Note=" + note + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteNote);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteFault(int inspectionID, String description) throws SQLException
+{
+	String deleteFault = "DELETE FROM Fault WHERE InsId=" + inspectionID + " AND Description=" + description + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteFault);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
+
+public void deleteFailure(int testID, String description) throws SQLException
+{
+	String deleteFailure = "DELETE FROM Failure WHERE TestId=" + testID + " AND Description=" + description + ';';
+	try
+	{
+		ResultsSet rs = statement_.executeQuery(deleteFailure);
+		return rs.toString();
+	}
+	catch(SQLException sqlex)
+	{
+		sqlex.printStackTrace();
+		throw sqlex;
+	}
+	return NULL;
+}
 }
