@@ -36,7 +36,7 @@ CREATE OR REPLACE TRIGGER office_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT emp_id_seq.nextval INTO :NEW.OfficeNo FROM DUAL;
+	SELECT office_id_seq.nextval INTO :NEW.OfficeNo FROM DUAL;
 	END;
 	/	
 
@@ -46,7 +46,7 @@ CREATE TABLE anicolette.Role(
 	role VARCHAR(50),
 	OfficeNo INT,
 	CONSTRAINT fk_officeroleKey FOREIGN KEY(OfficeNo) REFERENCES anicolette.Office(OfficeNo) ON DELETE CASCADE,
-	PRIMARY KEY (empId, role, OfficeNo)
+	PRIMARY KEY (empId, role)
 );
 
 CREATE TABLE anicolette.Car(
@@ -165,7 +165,7 @@ CREATE OR REPLACE TRIGGER lesson_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT lesson_id_seq.nextval INTO :NEW.LessonId FROM DUAL;
+	SELECT ins_id_seq.nextval INTO :NEW.LessonId FROM DUAL;
 	END;
 	/
 
@@ -196,7 +196,7 @@ CREATE OR REPLACE TRIGGER test_id_trigger
 	REFERENCING NEW AS NEW
 	FOR EACH ROW
 	BEGIN
-	SELECT test_id_seq.nextval INTO :NEW.TestId FROM DUAL;
+	SELECT ins_id_seq.nextval INTO :NEW.TestId FROM DUAL;
 	END;
 	/
 
