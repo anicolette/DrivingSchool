@@ -18,7 +18,6 @@
   // application
   dbcontroller.Open();
 
-  String manager = request.getParameter("mgrId");
   String city = request.getParameter("city");
   
   if(!dbcontroller.addOffice(city)){
