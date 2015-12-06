@@ -18,16 +18,28 @@
   // application
   dbcontroller.Open();
 
-  String description = request.getParameter("description");
-  String insIdStr = request.getParameter("insID");
-  int insId = -1;
-  try{
-	insId = Integer.parseInt(insIdStr);
-  } catch (Exception e){
-	throw e;
+  String interviewer = request.getParameter("interviewer");
+  String year = request.getParameter("year");
+  String month = request.getParameter("month");
+  String day = request.getParameter("day");
+  String hour = request.getParameter("hour");
+  String minute = request.getParameter("minute");
+  String client = request.getParameter("client");
+  
+  int interviewerID = -1;
+  try {
+	  interviewerID = Integer.parseInt(interviewer);
+  } catch (Exception e) {
+	  throw e;
+  }
+  int clientID = -1;
+  try {
+	  clientID = Integer.parseInt(client);
+  } catch (Exception e) {
+	  throw e;
   }
   
-  if(!dbcontroller.addFault(insId, description)){
+  if(!dbcontroller.addInterview(interviewerID, year, month, day, hour, minute, clientID)){
 	out.write("Error!");
 	out.write("</br><a href=\"index.html\">Return to home</a>");
   } else{ 

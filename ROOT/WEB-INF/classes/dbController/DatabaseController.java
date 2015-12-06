@@ -148,7 +148,7 @@ public class DatabaseController {
   }
 
   public boolean addNeed(int client, int instructor, String description) throws SQLException{
-	String addNeed = "INSERT INTO anicolette.Need(Client, Instructor, Description) VALUES(" + client + ", " + instructor + ", " + description + ")";
+	String addNeed = "INSERT INTO anicolette.Need(Client, Instructor, Description) VALUES(" + client + ", " + instructor + ", '" + description + "')";
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addNeed);
@@ -243,8 +243,8 @@ public class DatabaseController {
 	return true;
   }
 
-  public boolean addFault(String description) throws SQLException{
-	String addFault = "INSERT INTO anicolette.Fault(Description) VALUES('" + description + "')";
+  public boolean addFault(int inspectionId, String description) throws SQLException{
+	String addFault = "INSERT INTO anicolette.Fault(InsId, Description) VALUES(" + inspectionId  + ", '" + description + "')";
 	
 	try{
 		ResultSet rs = statement_.executeQuery(addFault);
