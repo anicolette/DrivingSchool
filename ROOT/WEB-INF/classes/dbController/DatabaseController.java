@@ -289,7 +289,7 @@ public class DatabaseController {
   
   public void deleteEmployee(int ID) throws SQLException
 {
-	String deleteEmployee = "DELETE FROM Employee WHERE IdNo=" + ID + ';';
+	String deleteEmployee = "DELETE FROM anicolette.Employee WHERE IdNo=" + ID + ';';
 	try
 	{
 		ResultSet rs = statement_.executeQuery(deleteEmployee);
@@ -305,7 +305,7 @@ public class DatabaseController {
 
 public void deleteOffice(int ID) throws SQLException
 {
-	String deleteOffice = "DELETE FROM Office WHERE OfficeNo=" + ID + ';';
+	String deleteOffice = "DELETE FROM anicolette.Office WHERE OfficeNo=" + ID + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteOffice);
@@ -321,7 +321,7 @@ public void deleteOffice(int ID) throws SQLException
 
 public void deleteCar(int ID) throws SQLException
 {
-	String deleteCar = "DELETE FROM Car WHERE CarId=" + ID + ';';
+	String deleteCar = "DELETE FROM anicolette.Car WHERE CarId=" + ID + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteCar);
@@ -337,7 +337,7 @@ public void deleteCar(int ID) throws SQLException
 
 public void deleteInspection(int ID) throws SQLException
 {
-	String deleteInspection = "DELETE FROM Inspection WHERE InsId=" + ID + ';';
+	String deleteInspection = "DELETE FROM anicolette.Inspection WHERE InsId=" + ID + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteInspection);
@@ -353,7 +353,7 @@ public void deleteInspection(int ID) throws SQLException
 
 public void deleteLesson(int ID) throws SQLException
 {
-	String deleteLesson = "DELETE FROM Lesson WHERE LessonId=" + ID + ';';
+	String deleteLesson = "DELETE FROM anicolette.Lesson WHERE LessonId=" + ID + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteLesson);
@@ -369,7 +369,7 @@ public void deleteLesson(int ID) throws SQLException
 
 public void deleteClient(int ID) throws SQLException
 {
-	String deleteClient = "DELETE FROM Client WHERE ClientId=" + ID + ';';
+	String deleteClient = "DELETE FROM anicolette.Client WHERE ClientId=" + ID + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteClient);
@@ -385,7 +385,7 @@ public void deleteClient(int ID) throws SQLException
 
 public void deleteDrivingTest(int ID) throws SQLException
 {
-	String deleteDrivingTest = "DELETE FROM DrivingTest WHERE TestId=" + ID + ';';
+	String deleteDrivingTest = "DELETE FROM anicolette.DrivingTest WHERE TestId=" + ID + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteDrivingTest);
@@ -402,7 +402,7 @@ public void deleteDrivingTest(int ID) throws SQLException
 public void deleteInterview(String year, String month, String day, String hour, String minute, int interviewerID) throws SQLException
 {
 	String time = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":00";
-	String deleteInterview = "DELETE FROM Interview WHERE Interviewer=" + interviewerID + " AND time=" + time + ';';
+	String deleteInterview = "DELETE FROM anicolette.Interview WHERE Interviewer=" + interviewerID + " AND time=" + time + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteInterview);
@@ -418,7 +418,7 @@ public void deleteInterview(String year, String month, String day, String hour, 
 
 public void deleteRole(int empID, String role, int officeNo) throws SQLException
 {
-	String deleteRole = "DELETE FROM Role WHERE empId=" + empID + " AND role=" + role + " AND OfficeNo=" + officeNo + ';';
+	String deleteRole = "DELETE FROM anicolette.Role WHERE empId=" + empID + " AND role=" + role + " AND OfficeNo=" + officeNo + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteRole);
@@ -435,7 +435,7 @@ public void deleteRole(int empID, String role, int officeNo) throws SQLException
 
 public void deleteNeed(int clientID, int instructorID, String description) throws SQLException
 {
-	String deleteNeed = "DELETE FROM Need WHERE Client=" + clientID + " AND Instructor=" + instructorID + " AND Description=" + description + ';';
+	String deleteNeed = "DELETE FROM anicolette.Need WHERE Client=" + clientID + " AND Instructor=" + instructorID + " AND Description=" + description + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteNeed);
@@ -451,7 +451,7 @@ public void deleteNeed(int clientID, int instructorID, String description) throw
 
 public void deleteNote(int lessonID, String note) throws SQLException
 {
-	String deleteNote = "DELETE FROM Note WHERE LessonId=" + lessonID + " AND Note=" + note + ';';
+	String deleteNote = "DELETE FROM anicolette.Note WHERE LessonId=" + lessonID + " AND Note=" + note + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteNote);
@@ -467,7 +467,7 @@ public void deleteNote(int lessonID, String note) throws SQLException
 
 public void deleteFault(int inspectionID, String description) throws SQLException
 {
-	String deleteFault = "DELETE FROM Fault WHERE InsId=" + inspectionID + " AND Description=" + description + ';';
+	String deleteFault = "DELETE FROM anicolette.Fault WHERE InsId=" + inspectionID + " AND Description=" + description + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteFault);
@@ -483,7 +483,7 @@ public void deleteFault(int inspectionID, String description) throws SQLExceptio
 
 public void deleteFailure(int testID, String description) throws SQLException
 {
-	String deleteFailure = "DELETE FROM Failure WHERE TestId=" + testID + " AND Description=" + description + ';';
+	String deleteFailure = "DELETE FROM anicolette.Failure WHERE TestId=" + testID + " AND Description=" + description + ';';
 	try
 	{
 		ResultsSet rs = statement_.executeQuery(deleteFailure);
