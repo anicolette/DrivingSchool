@@ -3,7 +3,8 @@ CREATE TABLE anicolette.Employee(
 	firstName VARCHAR(50),
 	middleName VARCHAR(50),
 	lastName VARCHAR(50),	
-	Salary INT
+	Salary INT,
+	PhoneNum VARCHAR(10)
 );
 
 CREATE SEQUENCE emp_id_seq

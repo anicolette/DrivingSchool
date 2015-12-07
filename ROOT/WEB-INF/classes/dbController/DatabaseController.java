@@ -98,9 +98,9 @@ public class DatabaseController {
     }
   }
 
-  public boolean addEmployee(String fName, String mName, String lName, int salary) throws SQLException{
+  public boolean addEmployee(String fName, String mName, String lName, int salary, String phoneNum) throws SQLException{
 	
-	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, Salary) VALUES('" + fName + "', '" + mName + "', '" + lName + "', "  + salary + ")";
+	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, Salary, PhoneNum) VALUES('" + fName + "', '" + mName + "', '" + lName + "', "  + salary + ", " + phoneNum  + ")";
 
 	try {
 		ResultSet rs = statement_.executeQuery(insertEmployee);	
@@ -483,4 +483,16 @@ public boolean deleteFailure(int testID, String description) throws SQLException
 	}
 	return true;
 }
+
+	public boolean assignManager(int officeId, int empId) throws SQLException{
+		String assignManager = "UPDATE anicolette.Office SET mgrid=" + empId  + " WHERE OfficeNo=" + officeId;
+
+		try{
+			ResultSet rs = statement_.executeQuery(assignManager);
+		} catch (SQLException sqlex){
+			sqlex.printStackTrace();
+			throw sqlex;
+		}
+		return true;
+	}
 }

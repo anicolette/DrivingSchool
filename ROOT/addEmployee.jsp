@@ -22,6 +22,7 @@
   String mName = request.getParameter("Middle Name");
   String lName = request.getParameter("Last Name");
   String salStr = request.getParameter("Salary");
+  String phoneNum = request.getParameter("phoneNum");
   int salary = 0;
   try{
 	salary = Integer.parseInt(salStr);
@@ -29,7 +30,7 @@
 	throw e;
   }
 
-  if(!dbcontroller.addEmployee(fName, mName, lName, salary)){
+  if(!dbcontroller.addEmployee(fName, mName, lName, salary, phoneNum)){
 	out.write("Error!");
 	out.write("</br><a href=\"index.html\">Return to home</a>");
   } else{ 
