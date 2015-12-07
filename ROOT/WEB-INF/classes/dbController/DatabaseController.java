@@ -515,7 +515,7 @@ public boolean deleteFailure(int testID, String description) throws SQLException
 	} 
 
 	public Vector<String> listGlasgowOffices() throws SQLException{
-		String glasOffices = "SELECT ADDRESS,OFFICE FROM anicolette.Office WHERE anicolette.Office.city='Glasgow' ORDER BY OfficeNo";
+		String glasOffices = "SELECT ADDRESS,OFFICENO FROM anicolette.Office WHERE anicolette.Office.city='Glasgow' ORDER BY OfficeNo";
 		try{
 			ResultSet rs = statement_.executeQuery(glasOffices);
 			Vector<String> resultOffices = new Vector<String>();
