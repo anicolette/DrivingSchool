@@ -555,4 +555,35 @@ public boolean deleteFailure(int testID, String description) throws SQLException
 			throw sqlex;
 		}
 	}
+	
+	/*
+	 * Method: getAverageMiles()
+	 * Description: Uses the MilesDriven attribute from the Lesson table to 
+	 * calculate the average miles driven per hour lesson and 
+	 * returns the resulting Vector<String>
+	 * Input: None
+	 * Output: Vector<String> containing the average miles driven per hour lesson
+	 */
+
+	public Vector<String> getAverageMiles() throws SQLException
+	{
+		String average = "SELECT AVG(MILESDRIVEN) AVERAGE_MILES FROM anicolette.Lesson";
+		try
+		{
+			ResultSet rs = statement_.executeQuery(average);
+			Vector<String> resultAvg = new Vector<String>();
+			while(rs.next())
+			{
+				String tempRec = rs.getString("MILESDRIVEN");
+
+				resultAvg.add(tempRec);
+			}
+			return resultAvg;
+		} 
+		catch (SQLException sqlex)
+		{
+			throw sqlex;
+		}
+		
+	}
 }
