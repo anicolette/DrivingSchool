@@ -513,4 +513,21 @@ public boolean deleteFailure(int testID, String description) throws SQLException
 			throw sqlex;
 		}
 	} 
+
+	public Vector<String> listGlasgowOffices() throws SQLException{
+		String glasOffices = "SELECT ADDRESS,OFFICE FROM anicolette.Office WHERE anicolette.Office.city='Glasgow' ORDER BY OfficeNo";
+		try{
+			ResultSet rs = statement_.executeQuery(glasOffices);
+			Vector<String> resultOffices = new Vector<String>();
+			while(rs.next()){
+				String tempRec = rs.getString("ADDRESS") + " ## " + rs.getString("OFFICENO");
+
+				resultOffices.add(tempRec);
+			}
+			return resultOffices;
+		} catch (SQLException sqlex){
+			throw sqlex;
+		}
+		
+	}
 }
