@@ -98,9 +98,9 @@ public class DatabaseController {
     }
   }
 
-  public boolean addEmployee(String fName, String mName, String lName, int salary, String phoneNum) throws SQLException{
+  public boolean addEmployee(String fName, String mName, String lName, int salary, String phoneNum, char sex) throws SQLException{
 	
-	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, Salary, PhoneNum) VALUES('" + fName + "', '" + mName + "', '" + lName + "', "  + salary + ", " + phoneNum  + ")";
+	String insertEmployee = "INSERT INTO anicolette.Employee(firstName, middleName, lastName, Salary, sex, PhoneNum) VALUES('" + fName + "', '" + mName + "', '" + lName + "', "  + salary + ", '" + sex + "', '" + phoneNum  + "')";
 
 	try {
 		ResultSet rs = statement_.executeQuery(insertEmployee);	
@@ -123,8 +123,8 @@ public class DatabaseController {
 	return true;
   }
 
-  public boolean addOffice(String city) throws SQLException{
-	String addOffice = "INSERT INTO anicolette.Office(city) VALUES('" + city + "')";
+  public boolean addOffice(String city, String address) throws SQLException{
+	String addOffice = "INSERT INTO anicolette.Office(city, address) VALUES('" + city + "', '" + address  + "')";
 
 	try{
 		ResultSet rs = statement_.executeQuery(addOffice);
@@ -217,9 +217,9 @@ public class DatabaseController {
 	return true;
   }
 
-  public boolean addClient(String fName, String mName, String lName, int registered, String year, String month, String day, int provisionNum, int assignedInstructor, int requestedInstructor) throws SQLException{
-	String addClient = "INSERT INTO anicolette.Client(firstName, middleName, lastName, registered, dob, provisionNum, assignedInstructor, requestedInstructor) VALUES(";
-	addClient += "'" + fName + "', '" + mName + "', '" + lName + "', " + registered + ", DATE '" + year + "-" + month + "-" + day + "', " + provisionNum + ", ";
+  public boolean addClient(String fName, String mName, String lName, int registered, String year, String month, String day, int provisionNum, int assignedInstructor, int requestedInstructor, char sex) throws SQLException{
+	String addClient = "INSERT INTO anicolette.Client(firstName, middleName, lastName, registered, dob, sex, provisionNum, assignedInstructor, requestedInstructor) VALUES(";
+	addClient += "'" + fName + "', '" + mName + "', '" + lName + "', " + registered + ", DATE '" + year + "-" + month + "-" + day + "', '" + sex + "', " + provisionNum + ", ";
 	addClient += assignedInstructor + ", " + requestedInstructor + ")";
 	
 	try{
@@ -229,6 +229,7 @@ public class DatabaseController {
 		throw sqlex;
 	}
 	return true;
+	
   }
 
   public boolean addFailure(int test, String description) throws SQLException{

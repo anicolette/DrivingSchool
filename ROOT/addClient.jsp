@@ -28,6 +28,8 @@
   String provisionNum = request.getParameter("provisionNum");
   String assignedInstructor = request.getParameter("assignedInstructor");
   String requestedInstructor = request.getParameter("requestedInstructor");
+  char sex = request.getParameter("sex").charAt(0);
+
   int rgstrd = -1;
   try{
 	rgstrd = Integer.parseInt(registered);
@@ -54,7 +56,7 @@
 	  throw e;
   }
 
-  if(!dbcontroller.addClient(fName, mName, lName, rgstrd, birthYear, birthMonth, birthDay, provNum, assndIns, rqstIns)){
+  if(!dbcontroller.addClient(fName, mName, lName, rgstrd, birthYear, birthMonth, birthDay, provNum, assndIns, rqstIns, sex)){
 	out.write("Error!");
 	out.write("</br><a href=\"index.html\">Return to home</a>");
   } else{ 

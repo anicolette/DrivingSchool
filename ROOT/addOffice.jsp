@@ -19,8 +19,9 @@
   dbcontroller.Open();
 
   String city = request.getParameter("city");
+  String address = request.getParameter("address");
   
-  if(!dbcontroller.addOffice(city)){
+  if(!dbcontroller.addOffice(city, address)){
 	out.write("Error!");
 	out.write("</br><a href=\"index.html\">Return to home</a>");
   } else{ 

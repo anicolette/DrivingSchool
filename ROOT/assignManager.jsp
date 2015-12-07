@@ -18,20 +18,19 @@
   // application
   dbcontroller.Open();
 
-  String fName = request.getParameter("First Name");
-  String mName = request.getParameter("Middle Name");
-  String lName = request.getParameter("Last Name");
-  String salStr = request.getParameter("Salary");
-  String phoneNum = request.getParameter("phoneNum");
-  char sex = request.getParameter("sex").charAt(0);
-  int salary = 0;
+  String officeIdStr = request.getParameter("officeId");
+  String empIdStr = request.getParameter("empId");
+  
+  int officeId = -1;
+  int empId = -1;
   try{
-	salary = Integer.parseInt(salStr);
+	officeId = Integer.parseInt(officeIdStr);
+	empId = Integer.parseInt(empIdStr);
   } catch(Exception e){
 	throw e;
   }
 
-  if(!dbcontroller.addEmployee(fName, mName, lName, salary, phoneNum, sex)){
+  if(!dbcontroller.assignManager(officeId, empId)){
 	out.write("Error!");
 	out.write("</br><a href=\"index.html\">Return to home</a>");
   } else{ 
@@ -45,3 +44,4 @@
 </div>
 </body>
 </html>
+
