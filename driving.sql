@@ -27,8 +27,7 @@ CREATE TABLE anicolette.Office(
 	address VARCHAR(50),
 	mgrId INT, 
 	CONSTRAINT fk_mgrKey FOREIGN KEY(mgrId) REFERENCES anicolette.Employee(IdNo) ON DELETE SET NULL,
-	city VARCHAR(50),
-	gender CHAR
+	city VARCHAR(50)
 );
 
 CREATE SEQUENCE office_id_seq
