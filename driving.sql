@@ -4,6 +4,7 @@ CREATE TABLE anicolette.Employee(
 	middleName VARCHAR(50),
 	lastName VARCHAR(50),	
 	Salary INT,
+	sex CHAR,
 	PhoneNum VARCHAR(10)
 );
 
@@ -23,9 +24,11 @@ CREATE OR REPLACE TRIGGER emp_id_trigger
 
 CREATE TABLE anicolette.Office(
 	OfficeNo INT, PRIMARY KEY(OfficeNo),
+	address VARCHAR(50),
 	mgrId INT, 
 	CONSTRAINT fk_mgrKey FOREIGN KEY(mgrId) REFERENCES anicolette.Employee(IdNo) ON DELETE SET NULL,
-	city VARCHAR(50)
+	city VARCHAR(50),
+	gender CHAR
 );
 
 CREATE SEQUENCE office_id_seq
@@ -107,7 +110,7 @@ CREATE TABLE anicolette.Client(
 	registered INT,
 	CONSTRAINT fk_officeregKey FOREIGN KEY(registered) REFERENCES anicolette.Office(OfficeNo) ON DELETE SET NULL,
 	dob DATE,
-	ssn INT,
+	sex CHAR,
 	provisionNum INT,
 	assignedInstructor INT,
 	CONSTRAINT fk_assignedinsKey FOREIGN KEY(assignedInstructor) REFERENCES anicolette.Employee(IdNo) ON DELETE SET NULL,
