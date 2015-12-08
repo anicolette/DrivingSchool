@@ -34,4 +34,18 @@ Division of Work:
 		-Created .jsp files for inserting/deleting
 		-Created the .jsp files and method in DatabaseController for find all appointments
 		query and find all interview queries
-		
+
+	Daniel:
+		-Created the .jsp file and method in DatabaseController for average miles per lesson
+		-Started deletion methods in DatabaseController
+		-Created ER Diagram and designed database
+		-Performed normalization analysis
+
+	Alejandro:
+		-Debugged and completed deletion methods in DatabaseController
+		-Created .jsp files and methods in DatabaseController for listManagers and listGlasgowOffices queries
+		-Created all insertion methods in DatabaseController
+		-Created all initial methods in DatabaseController
+		-Created and organized directories
+		-Planned out and organized back end
+		-Adjusted table attributes as needed and created physical database
