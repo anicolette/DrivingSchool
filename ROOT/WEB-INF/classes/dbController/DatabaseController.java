@@ -539,10 +539,10 @@ public boolean deleteFailure(int testID, String description) throws SQLException
 	
 	**/
 	public Vector<String> findAppointment(int empID) throws SQLException {
-		String query = "SELECT instDate FROM cjkarl.Inspection WHERE cjkarl.Inspection.Inspector=" + empID + " AND cjkarl.Inspection.instDate > SYSDATE AND cjkarl.Inspection.instDate < (SYSDATE + 7) UNION "
-						+ "SELECT time FROM cjkarl.Interview WHERE cjkarl.Interview.Interviewer=" + empID + " AND cjkarl.Interview.time > SYSDATE AND cjkarl.Interview.time < (SYSDATE + 7) UNION "
-						+ "SELECT time FROM cjkarl.Lesson WHERE cjkarl.Lesson.Instructor=" + empID + " AND cjkarl.Lesson.time > SYSDATE AND cjkarl.Lesson.time < (SYSDATE + 7) UNION "
-						+ "SELECT time FROM cjkarl.DrivingTest WHERE cjkarl.DrivingTest.InstructorID=" + empID + " AND cjkarl.DrivingTest.time > SYSDATE AND cjkarl.DrivingTest.time < (SYSDATE + 7)";
+		String query = "SELECT instDate FROM anicolette.Inspection WHERE anicolette.Inspection.Inspector=" + empID + " AND anicolette.Inspection.instDate > SYSDATE AND anicolette.Inspection.instDate < (SYSDATE + 7) UNION "
+						+ "SELECT time FROM anicolette.Interview WHERE anicolette.Interview.Interviewer=" + empID + " AND anicolette.Interview.time > SYSDATE AND anicolette.Interview.time < (SYSDATE + 7) UNION "
+						+ "SELECT time FROM anicolette.Lesson WHERE anicolette.Lesson.Instructor=" + empID + " AND anicolette.Lesson.time > SYSDATE AND anicolette.Lesson.time < (SYSDATE + 7) UNION "
+						+ "SELECT time FROM anicolette.DrivingTest WHERE anicolette.DrivingTest.InstructorID=" + empID + " AND anicolette.DrivingTest.time > SYSDATE AND anicolette.DrivingTest.time < (SYSDATE + 7)";
 		try {
 			ResultSet rs = statement_.executeQuery(query);
 			Vector<String> resultQuery = new Vector<String>();
@@ -563,7 +563,7 @@ public boolean deleteFailure(int testID, String description) throws SQLException
 	 * Output: Vector<String> objects with the Interview details written in them.
 	 */
 	public Vector<String> findInterview(int empID) throws SQLException {
-		String query = "SELECT * FROM cjkarl.Interview WHERE cjkarl.Interview.Interviewer=" + empID;
+		String query = "SELECT * FROM anicolette.Interview WHERE anicolette.Interview.Interviewer=" + empID;
 		
 		try {
 			ResultSet rs = statement_.executeQuery(query);
