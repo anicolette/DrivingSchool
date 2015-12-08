@@ -538,16 +538,38 @@ public boolean deleteFailure(int testID, String description) throws SQLException
 		Output: Vector<String> objects with the timeStamps written in them.
 	
 	**/
-	public Vector<String> findAppontment(int empID) throws SQLException {
-		String query = "SELECT instDate FROM cjkarl.Inspection WHERE cjkarl.Inspection.Inspector=" + empID + " AND cjkarl.Inspection.instDate > SYSDATE AND cjkarl.Inspection.instDate < (SYSDATE + 7) UNION"
-						+ "SELECT time FROM cjkarl.Interview WHERE cjkarl.Interview.Interviewer=" + empID + " AND cjkarl.Interview.time > SYSDATE AND cjkarl.Interview.time < (SYSDATE + 7) UNION"
-						+ "SELECT time FROM cjkarl.Lesson WHERE cjkarl.Lesson.Instructor=" + empID + " AND cjkarl.Lesson.time > SYSDATE AND cjkarl.Lesson.time < (SYSDATE + 7) UNION"
-						+ "SELECT time FROM cjkarl.DrivingTest WHERE cjkarl.DrivingTest.InstructorID=" + empID + " AND cjkarl.DrivingTest.time > SYSDATE AND cjkarl.DrivingTest.time < (SYSDATE + 7);";
+	public Vector<String> findAppointment(int empID) throws SQLException {
+		String query = "SELECT instDate FROM cjkarl.Inspection WHERE cjkarl.Inspection.Inspector=" + empID + " AND cjkarl.Inspection.instDate > SYSDATE AND cjkarl.Inspection.instDate < (SYSDATE + 7) UNION "
+						+ "SELECT time FROM cjkarl.Interview WHERE cjkarl.Interview.Interviewer=" + empID + " AND cjkarl.Interview.time > SYSDATE AND cjkarl.Interview.time < (SYSDATE + 7) UNION "
+						+ "SELECT time FROM cjkarl.Lesson WHERE cjkarl.Lesson.Instructor=" + empID + " AND cjkarl.Lesson.time > SYSDATE AND cjkarl.Lesson.time < (SYSDATE + 7) UNION "
+						+ "SELECT time FROM cjkarl.DrivingTest WHERE cjkarl.DrivingTest.InstructorID=" + empID + " AND cjkarl.DrivingTest.time > SYSDATE AND cjkarl.DrivingTest.time < (SYSDATE + 7)";
 		try {
 			ResultSet rs = statement_.executeQuery(query);
 			Vector<String> resultQuery = new Vector<String>();
 			while(rs.next()) {
 				String tempRec = rs.getString("INSTDATE");
+				resultQuery.add(tempRec);
+			}
+			return resultQuery;
+		} catch(SQLException sqlex) {
+			throw sqlex;
+		}
+	}
+	
+	/*
+	 * Method: findInterview(empID)
+	 * Description: takes in an employee ID number, and finds all of the interviews that employee has completed or is scheduled for
+	 * Input: An employee ID number
+	 * Output: Vector<String> objects with the Interview details written in them.
+	 */
+	public Vector<String> findInterview(int empID) throws SQLException {
+		String query = "SELECT * FROM cjkarl.Interview WHERE cjkarl.Interview.Interviewer=" + empID;
+		
+		try {
+			ResultSet rs = statement_.executeQuery(query);
+			Vector<String> resultQuery = new Vector<String>();
+			while(rs.next()) {
+				String tempRec = rs.getString("INTERVIEWER") + " ## " + rs.getString("time") + " ## " + rs.getString("ClIENT");
 				resultQuery.add(tempRec);
 			}
 			return resultQuery;
