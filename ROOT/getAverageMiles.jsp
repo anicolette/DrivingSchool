@@ -31,8 +31,10 @@
      content.append("Query result is null!");
    }
    content.append("<tr><th>AVERAGE MILES DRIVEN PER HOUR LESSON</th>");
-  if (vecResult != null && vecResult.size() > 0) {
-    for (int i = 0; i < vecResult.size(); i++) {
+  if (vecResult != null && vecResult.size() > 0) 
+  {
+    for (int i = 0; i < vecResult.size(); i++) 
+	{
       String row = vecResult.get(i);
       String[] detail = row.split("##");
       if (detail.length != 1) {
@@ -40,7 +42,7 @@
       }
       content.append(
           "<tr id=\"tablerow_" + i + "\">");
-      content.append("<td>" + detail[0] + "</td>";
+      content.append("<td>" + detail[0] + "</td>");
       content.append("</tr>");
     }
   }
